@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Selecciona las cantidades</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let product of order.pedido">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" [src]="product.image" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{product.nameProducto}}</h2>
+          <p color="primary">$ {{product.valor | number}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col
+              ><ion-button
+                shape="round"
+                fill="clear"
+                (click)="operate('minus' , product)"
+                ><ion-icon name="remove-circle-outline"></ion-icon></ion-button
+            ></ion-col>
+            <ion-col
+              class="ion-text-center ion-padding-top ion-align-items-center"
+              >{{product.cantidad}}</ion-col
+            >
+            <ion-col
+              ><ion-button
+                shape="round"
+                fill="clear"
+                (click)="operate('add' , product)"
+                ><ion-icon name="add-circle-outline"></ion-icon></ion-button
+            ></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-padding-top ion-align-items-center" size="9">Total aproximado $ {{order.totalPagado| number}}</ion-col>
+        <ion-col>
+          <ion-button [class.button-disabled]="order.totalPagado === 0" (click)="sendToOrder()" fill="clear" size="small">
+            <!-- <ion-icon slot="icon-only" name="star"></ion-icon> -->
+            <ion-icon slot="icon-only" name="arrow-forward-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

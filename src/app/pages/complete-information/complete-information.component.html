@@ -1,0 +1,32 @@
+<div>
+  <ion-img
+    
+    class="ion-margin-horizontal"
+    [src]="'assets/images/logo.png'"
+  ></ion-img>
+  <div class="banner"></div>
+  <ion-button *ngIf="!isRegisterManual" expand="full" shape="round" (click)="registerSession()">Iniciar con cuenta</ion-button>
+
+  <ion-button *ngIf="!isRegisterManual" expand="full" shape="round" fill="clear" (click)="startSession()">
+    <ion-icon name="logo-google"></ion-icon>&nbsp;Iniciar con Google
+  </ion-button>
+
+  <ion-list *ngIf="isRegisterManual">
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input [(ngModel)]="user.name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Telefono</ion-label>
+      <ion-input [(ngModel)]="user.phone" type="tel"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button *ngIf="isRegisterManual" expand="full" shape="round" (click)="setUserRegister()">Crear cuenta</ion-button>
+</div>

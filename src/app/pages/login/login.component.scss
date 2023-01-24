@@ -1,0 +1,23 @@
+ion-img {
+  width: 60vw;
+  margin: auto;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.load {
+  animation: crescendo 1.5s alternate infinite ease-in;
+}
+
+p{
+  color: var(--ion-color-primary);
+}
+
+@keyframes crescendo {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
