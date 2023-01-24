@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "772776813621",
+    "project_id": "pub-data-744f9",
+    "storage_bucket": "pub-data-744f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772776813621:android:1881db18cc62d2496a7d7c",
+        "android_client_info": {
+          "package_name": "com.co.pub.finos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772776813621-7er0nf8drbt4d9j3i7rie83k2b5001ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClmLZ0_SzEYLqdY9AKRgLP5B3uKhVb9ZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772776813621-7er0nf8drbt4d9j3i7rie83k2b5001ne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <div class="container-header">
+    <ion-img class="blur-image" [src]="'assets/images/banner.jpeg'"></ion-img>
+    <p>Mesa {{mesaOrder}}</p>
+  </div>
+  <ion-grid *ngIf="load">
+    <ion-row class="ion-padding-top ion-justify-content-center">
+      <ion-spinner></ion-spinner>
+    </ion-row>
+  </ion-grid>
+  <!-- Scrollable Segment -->
+  <ion-segment *ngIf="!load" scrollable [value]="indexSelect" description="primary" (ionChange)="segmentChanged($event)">
+    <ion-segment-button *ngFor="let item of items; let ind = index" [value]="ind" style="color: #7d7d7d">
+      <ion-label>{{item.category | titlecase }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-virtual-scroll *ngIf="!load" [items]="products" approxItemHeight="5rem">
+    <ion-card *virtualItem="let item; let itemBounds = bounds;">
+      <ion-card-content class="ion-no-padding" *ngIf="item.active && item.cant > 5">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img
+              alt="Product visual"
+              [src]="item.images"/>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{item.ref}}</h3>
+            <p>$ {{item.price | number}}</p>
+          </ion-label>
+          <ion-button (click)="adicionarItem(item)" shape="round" fill="outline" slot="end">
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-virtual-scroll>
+</ion-content>

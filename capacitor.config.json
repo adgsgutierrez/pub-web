@@ -1,0 +1,20 @@
+{
+	"appId": "com.co.pub.finos",
+	"appName": "finos-pub",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"CapacitorFirebaseAuth": {
+			"providers": ["google.com"],
+			"languageCode": "en",
+			"nativeAuth": true
+		},
+		"FirebaseAuthentication": {
+			"skipNativeAuth": false,
+			"providers": ["google.com"]
+		},
+		"permissions": {
+			"google": ["profile"]
+		}
+	}
+}

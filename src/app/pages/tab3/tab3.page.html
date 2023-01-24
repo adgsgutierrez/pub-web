@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" onLoad="loadApp()">
+  <ion-segment scrollable [value]="indexSelect" description="primary" (ionChange)="segmentChanged($event)">
+    <ion-segment-button style="color: #7d7d7d" [value]="'historial'">
+      <ion-label>{{'Historial' | titlecase }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button style="color: #7d7d7d" [value]="'perfil'">
+      <ion-label>{{'Perfil' | titlecase }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ng-container *ngTemplateOutlet="template"></ng-container>
+</ion-content>
+
+<ng-template #historial>
+  <ion-content class="ion-padding">
+    <ion-list *ngIf="historialData.length > 0">
+      <ion-item *ngFor="let item of historialData" button detail="true" detail-icon="caret-forward-outline">
+        <ion-label>
+          <h3><strong>Pedido</strong> en mesa {{item.idMesa}}</h3>
+          <p><strong>Fecha</strong> {{ item.fechaInicio.toMillis() | date:'yyyy/MM/dd' }}</p>
+          <p><strong>Hora</strong> {{ item.fechaInicio.toMillis() | date:'h:mm:ss a' }}</p>
+          <p><strong>Cantidad de Productos</strong> {{ item.pedido.length }}</p>
+          <p><strong>Total</strong> $ {{ item.totalPagado | number}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding "  *ngIf="historialData.length === 0">
+      <div class="ion-text-center ion-padding ion-margin-top">
+        <ion-img class="ion-margin-horizontal ion-margin-bottom" style="width: 80%;" [src]="'assets/images/music_temp.png'"></ion-img>
+      </div>
+      <div class="ion-text-center ion-padding ion-margin-top">
+        <p>Proximamente podrás encontrar aquí tus pedidos</p>
+      </div>
+    </div>
+  </ion-content>
+</ng-template>
+
+<ng-template #perfil>
+  <ion-content class="ion-padding">
+    <ion-img class="ion-margin-horizontal" [src]="'assets/images/logo.png'"></ion-img>
+    <ion-list>
+      <ion-item>
+        <ion-label>Correo</ion-label>
+        <p>{{user.email}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <p>{{user.name}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label>Telefono</ion-label>
+        <p>{{user.phone || 'No encontrado'}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ng-template>
